@@ -1,8 +1,8 @@
 import { useState } from "react"
 import words from "./wordList.json"
 import { HangmanDrawing } from "./components/HangmanDrawing"
-import { HangmanWord } from "./components/HangmaWord"
-import { Keyboard } from "./components/Keyboard"
+// import { HangmanWord } from "./components/HangmaWord"
+// import { Keyboard } from "./components/Keyboard"
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -15,24 +15,25 @@ function App() {
 
   console.log(wordToGuess);
   return (
-    <div style={{
-      maxWidth: "800px",
-      display: "flex",
-      flexDirection: "column",
-      gap: "2rem",
-      margin: "0 auto",
-      alignItems: "center"
-    }}>
       <div style={{
-        fontSize:"2rem",
-        textAlign:"center"
-        }}>
-          Lose win
+        maxWidth: "800px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        margin: "0 auto",
+        justifyContent:"center",
+        alignItems: "center",
+      }}>
+        <div style={{
+          fontSize:"2rem",
+          textAlign:"center"
+          }}>
+            Lose win
+        </div>
+        <HangmanDrawing />
+        {/* <HangmanWord />
+        <Keyboard /> */}
       </div>
-      <HangmanDrawing />
-      <HangmanWord />
-      <Keyboard />
-    </div>
   )
 }
 
