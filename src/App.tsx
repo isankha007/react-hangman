@@ -1,7 +1,7 @@
 import { useState } from "react"
 import words from "./wordList.json"
 import { HangmanDrawing } from "./components/HangmanDrawing"
-// import { HangmanWord } from "./components/HangmaWord"
+import { HangmanWord } from "./components/HangmaWord"
 // import { Keyboard } from "./components/Keyboard"
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
         flexDirection: "column",
         gap: "2rem",
         margin: "0 auto",
-        justifyContent:"center",
         alignItems: "center",
+        alignContent: "center"
       }}>
         <div style={{
           fontSize:"2rem",
@@ -31,8 +31,8 @@ function App() {
             Lose win
         </div>
         <HangmanDrawing />
-        {/* <HangmanWord />
-        <Keyboard /> */}
+        <HangmanWord />
+        {/* <Keyboard /> */}
       </div>
   )
 }
