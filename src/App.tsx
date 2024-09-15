@@ -2,7 +2,7 @@ import { useState } from "react"
 import words from "./wordList.json"
 import { HangmanDrawing } from "./components/HangmanDrawing"
 import { HangmanWord } from "./components/HangmaWord"
-// import { Keyboard } from "./components/Keyboard"
+import { Keyboard } from "./components/Keyboard"
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -22,7 +22,6 @@ function App() {
         gap: "2rem",
         margin: "0 auto",
         alignItems: "center",
-        alignContent: "center"
       }}>
         <div style={{
           fontSize:"2rem",
@@ -32,7 +31,9 @@ function App() {
         </div>
         <HangmanDrawing />
         <HangmanWord />
-        {/* <Keyboard /> */}
+        <div style={{alignSelf:"stretch"}}>
+        <Keyboard />
+        </div>
       </div>
   )
 }
