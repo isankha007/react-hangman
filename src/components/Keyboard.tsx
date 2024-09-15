@@ -1,3 +1,5 @@
+import styles from "./../Keyboard.module.css"
+
 const KEYS = [
     "a",
     "b",
@@ -25,17 +27,21 @@ const KEYS = [
     "x",
     "y",
     "z",
-  ]
-export function Keyboard(){
+]
+export function Keyboard() {
     return (
         <div style={
-            {display:"grid",gridTemplateColumns:
-            "repeat (auto-fit, minmax(75px,1fr))",
-            gap:".5em",
+            {
+                display: "grid", gridTemplateColumns:
+                    "repeat(auto-fit, minmax(75px,1fr))",
+                gap: ".5em",
             }}  >
-        {KEYS.map(key =>{
-            return <button className="" key={key}>{key} </button>
-        })}        
+            {KEYS.map(key => {
+                return <button
+                    className={`${styles.btn} ${styles.inactive}`} key={key}>
+                    {key}
+                </button>
+            })}
         </div>
     )
 } 
