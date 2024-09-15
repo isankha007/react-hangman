@@ -12,16 +12,18 @@ function App() {
   const [wordToGuess, setWordToGuess] = useState(getWord)
 
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
-  const incorrectLetters = guessedLetters.filter(letter=> !words.includes(letter))
+  
+  const incorrectLetters = 
+  guessedLetters.filter(letter => !wordToGuess.includes(letter))
 
   console.log(wordToGuess);
 
-  const addGuessLetter = useCallback((letter: string)=>{
-    if(guessedLetters.includes(letter)) return
+  const addGuessLetter = useCallback((letter: string) => {
+    if (guessedLetters.includes(letter)) return
 
-    setGuessedLetters(currentLtter => [...currentLtter,letter])
+    setGuessedLetters(currentLtter => [...currentLtter, letter])
 
-  },[guessedLetters])
+  }, [guessedLetters])
 
   // function addGuessLetter(letter: string){
   //   if(guessedLetters.includes(letter)) return
@@ -30,42 +32,42 @@ function App() {
 
   // }
 
-  useEffect(()=>{
-    const handler = (e: KeyboardEvent)=>{
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+
+      const key = e.key
+      if (!key.match(/^[a-z]$/)) return
+
       e.preventDefault()
-
-      const key= e.key
-      if(!key.match(/^[a-z]$/)) return
-
       addGuessLetter(key)
 
     }
-    document.addEventListener("keypress",handler)
-    return ()=>{
-      document.removeEventListener("keypress",handler)
+    document.addEventListener("keypress", handler)
+    return () => {
+      document.removeEventListener("keypress", handler)
     }
-  })
+  }, [guessedLetters])
   return (
+    <div style={{
+      maxWidth: "800px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      margin: "0 auto",
+      alignItems: "center",
+    }}>
       <div style={{
-        maxWidth: "800px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "2rem",
-        margin: "0 auto",
-        alignItems: "center",
+        fontSize: "2rem",
+        textAlign: "center"
       }}>
-        <div style={{
-          fontSize:"2rem",
-          textAlign:"center"
-          }}>
-            Lose win
-        </div>
-        <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
-        <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
-        <div style={{alignSelf:"stretch"}}>
-        <Keyboard />
-        </div>
+        Lose win
       </div>
+      <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
+      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+      <div style={{ alignSelf: "stretch" }}>
+        <Keyboard />
+      </div>
+    </div>
   )
 }
 
